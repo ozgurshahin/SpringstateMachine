@@ -1,4 +1,4 @@
-package com.spring.statemachine.domain;
+package com.spring.statemachine.common;
 
 
 import lombok.Getter;

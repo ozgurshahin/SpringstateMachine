@@ -1,4 +1,4 @@
-package com.spring.statemachine.domain;
+package com.spring.statemachine.common;
 
 import lombok.NoArgsConstructor;
 import org.springframework.beans.BeansException;
@@ -18,6 +18,6 @@ public class DomainContextProvider implements ApplicationContextAware {
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
+        DomainContextProvider.applicationContext = applicationContext;
     }
 }

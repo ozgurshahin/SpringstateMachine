@@ -1,4 +1,4 @@
-package com.spring.statemachine.services;
+package com.spring.statemachine.service;
 
 import com.spring.statemachine.domain.Transaction;
 import com.spring.statemachine.domain.TransactionEvent;

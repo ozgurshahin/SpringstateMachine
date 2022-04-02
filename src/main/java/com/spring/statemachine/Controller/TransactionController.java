@@ -1,8 +1,9 @@
-package com.spring.statemachine.Controller;
+package com.spring.statemachine.controller;
 
 import com.spring.statemachine.domain.Transaction;
 import com.spring.statemachine.domain.TransactionStatus;
 import com.spring.statemachine.repository.TransactionRepository;
+import com.spring.statemachine.request.ChangeTransactionStatusRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,14 +37,14 @@ public class TransactionController {
 
     @PostMapping("/change-status")
     @Transactional
-    public ResponseEntity<TransactionStatus> changeTransactionStatus(@RequestBody(required = false) ChangeTransactionStatusRequest request) {
+    public ResponseEntity<Transaction> changeTransactionStatus(@RequestBody(required = false) ChangeTransactionStatusRequest request) {
         Transaction transaction = transactionRepository.getById(request.getTransactionId());
         if (TransactionStatus.APPROVED.equals(request.getNewStatus())) {
             transaction.confirmed();
         } else if (TransactionStatus.DECLINED.equals(request.getNewStatus())) {
             transaction.declined();
         }
-
-        return ResponseEntity.ok(Objects.requireNonNull(transaction.getStatus()));
+        transactionRepository.save(transaction);
+        return ResponseEntity.ok(Objects.requireNonNull(transaction));
     }
 }

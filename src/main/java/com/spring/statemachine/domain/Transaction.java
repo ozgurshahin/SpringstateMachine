@@ -1,5 +1,7 @@
 package com.spring.statemachine.domain;
 
+import com.spring.statemachine.common.DomainContextProvider;
+import com.spring.statemachine.common.DomainEntity;
 import lombok.*;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;

@@ -2,7 +2,7 @@ package com.spring.statemachine.config;
 
 import com.spring.statemachine.domain.TransactionEvent;
 import com.spring.statemachine.domain.TransactionState;
-import com.spring.statemachine.services.TransactionMessageService;
+import com.spring.statemachine.service.TransactionMessageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,7 +74,7 @@ public class TransactionStateMachineConfig extends EnumStateMachineConfigurerAda
     }
 
 
-    @Bean("transactionStateMachineListener") // Bu bean i koymasa ne degisir?
+    @Bean("transactionStateMachineListener")
     public StateMachineListener<TransactionState, TransactionEvent> listener() {
         return new StateMachineListenerAdapter<TransactionState, TransactionEvent>() {
             @Override
